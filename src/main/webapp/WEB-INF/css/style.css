@@ -8,6 +8,7 @@ a {
 body {
     background-color: #061823;
     font-family: Arial;
+    margin: 0;
 }
 p {
     color: #FAF0E6;
@@ -65,4 +66,12 @@ table{
 
 button:hover {
     background-color: #00FFFFFF;
+}
+
+.page-link{
+    color: #00FFFFFF;
+}
+.page-link:hover{
+    color: #38c9c9;
+
 }

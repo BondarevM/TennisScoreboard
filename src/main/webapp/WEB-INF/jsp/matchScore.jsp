@@ -14,11 +14,13 @@
 
 </head>
 <body>
+<%@include file="header.jsp"%>
+
 
 <div class="container">
     <table class="score-table">
         <tr>
-            <th>Имена игроков</th>
+            <th>Players</th>
             <th>Set</th>
             <th>Game</th>
             <th>Score</th>

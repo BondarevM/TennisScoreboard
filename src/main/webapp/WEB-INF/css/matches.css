@@ -1,0 +1,12 @@
+form{
+    display: flex;
+}
+table{
+    width: 100%;
+}
+th{
+    padding: 5px;
+}
+.pagination-controller{
+    display: flex;
+}

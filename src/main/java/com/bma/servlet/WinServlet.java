@@ -9,20 +9,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/new-match")
-public class NewMatchServlet extends HttpServlet {
-
+@WebServlet("/win")
+public class WinServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(JspUtil.getPath("newMatch")).forward(req, resp);
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // some logic
-
-
-        req.getRequestDispatcher(JspUtil.getPath("matchScore")).forward(req, resp);
-
+        req.getRequestDispatcher(JspUtil.getPath("winner")).forward(req, resp);
     }
 }

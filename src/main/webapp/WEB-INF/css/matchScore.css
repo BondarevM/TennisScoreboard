@@ -1,7 +1,6 @@
 .score-table {
     border-radius: 15px;
     border-collapse: collapse;
-    /*width: 80%;*/
 }
 
 .score-table th, .score-table td {

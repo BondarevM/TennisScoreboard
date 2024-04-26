@@ -9,19 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        <%@ include file="../css/style.css" %>
+    </style>
+    <style>
+        <%@ include file="../css/header.css" %>
+    </style>
+
 </head>
 <body>
-<section>
-    <header>
-        <nav>
-            <div class="nav-list">
-                <a class="nav-link" href="index"><div>HOME</div></a>
-                <a class="nav-link" href="new-match"><div>NEW</div></a>
-                <a class="nav-link" href="matches"><div>MATCHES</div></a>
-            </div>
-        </nav>
-    </header>
-</section>
+
+<div class="navigation">
+    <a class="page-link" href="index">
+        <div >HOME</div>
+    </a>
+    <a class="page-link" href="new-match">
+        <div>NEW</div>
+    </a>
+    <a class="page-link" href="matches">
+        <div>MATCHES</div>
+    </a>
+</div>
 
 
 </body>

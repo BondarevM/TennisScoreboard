@@ -14,6 +14,8 @@
     <style><%@ include file="../css/newMatch.css" %></style>
 </head>
 <body>
+<%@include file="header.jsp"%>
+
 <div class="container">
     <div class="item title">New match page</div>
     <form  action="/new-match" method="post">
@@ -27,7 +29,7 @@
                 <input type="text" name="SecondPlayerName" id="player2">
             </label>
         </div>
-        <div class="item start-button">
+        <div class=" start-button">
             <button type="submit">начать</button>
         </div>
     </form>
