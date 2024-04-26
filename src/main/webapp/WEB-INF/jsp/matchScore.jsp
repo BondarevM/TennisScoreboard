@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <style><%@ include file="../css/style.css" %></style>
     <style><%@ include file="../css/matchScore.css" %></style>
     <title>Match score</title>
 

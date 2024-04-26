@@ -18,7 +18,7 @@
         <p><a class="page-link" href="/new-match">NEW</a> - start new match</p>
     </div>
     <div class="item">
-        <p><a class="page-link" href="/matches">MATCHES</a> - start new match</p>
+        <p><a class="page-link" href="/matches">MATCHES</a> - List of matches played</p>
     </div>
 </div>
 </body>

@@ -9,25 +9,28 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>New Match</title>
+    <style><%@ include file="../css/style.css" %></style>
+    <style><%@ include file="../css/newMatch.css" %></style>
 </head>
 <body>
-    <h1> New match page</h1>
-
-    <form action="/new-match" method="post">
-        <div>
-        <label for="player1">Имя игрока 1:!
-            <input type="text" name="FirstPlayerName" id="player1">
-        </label>
+<div class="container">
+    <div class="item title">New match page</div>
+    <form  action="/new-match" method="post">
+        <div class="item">
+            <label for="player1">Имя игрока 1:
+                <input type="text" name="FirstPlayerName" id="player1">
+            </label>
         </div>
-        <div>
-        <label for="player2">Имя игрока 2:
-            <input type="text" name="SecondPlayerName" id="player2">
-        </label>
+        <div class="item">
+            <label for="player2">Имя игрока 2:
+                <input type="text" name="SecondPlayerName" id="player2">
+            </label>
         </div>
-        <div>
-        <button type="submit">начать</button>
+        <div class="item start-button">
+            <button type="submit">начать</button>
         </div>
     </form>
+</div>
 </body>
 </html>

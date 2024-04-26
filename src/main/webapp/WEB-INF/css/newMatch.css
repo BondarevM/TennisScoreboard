@@ -1,0 +1,8 @@
+.start-button{
+    align-self: end;
+}
+form{
+    padding: 15px;
+    display: flex;
+    /*flex-direction: column;*/
+}
