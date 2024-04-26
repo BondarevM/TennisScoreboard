@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div>
+<div class="container">
     <table class="score-table">
         <tr>
             <th>Имена игроков</th>
