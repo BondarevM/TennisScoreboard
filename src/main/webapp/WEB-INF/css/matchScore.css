@@ -1,0 +1,43 @@
+body {
+    background-color: #B0E0E6;
+}
+
+.score-table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.score-table th, .score-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    background-color: #ADD8E6;
+}
+
+.score-table th {
+    background-color: #87CEEB;
+}
+
+
+.button {
+    background-color: #87CEEB;
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.button-cell {
+    border: none !important;
+    background-color: #B0E0E6 !important;
+}
+
+.button:hover {
+    width: 100%;
+    height: 100%;
+    background-color: #79b2c9;
+}

@@ -16,7 +16,7 @@
 
     <form action="/new-match" method="post">
         <div>
-        <label for="player1">Имя игрока 1:
+        <label for="player1">Имя игрока 1:!
             <input type="text" name="FirstPlayerName" id="player1">
         </label>
         </div>
