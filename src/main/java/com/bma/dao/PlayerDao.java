@@ -8,8 +8,10 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class PlayerDao {
-    public void save(String name){
-        try(Session session = HibernateUtil.buildSession()) {
+
+
+    public void save(String name) {
+        try (Session session = HibernateUtil.buildSession()) {
             session.beginTransaction();
 
             Player player = Player.builder()
@@ -22,22 +24,22 @@ public class PlayerDao {
         }
     }
 
-    public Player get(String name){
+    public Player get(String name) {
         String hql = "FROM Player WHERE name = :name";
-        try(Session session = HibernateUtil.buildSession()            ){
+        try (Session session = HibernateUtil.buildSession()) {
             session.beginTransaction();
 
             Query query = session.createQuery(hql).setParameter("name", name);
             session.getTransaction().commit();
 
-                return (Player) query.uniqueResult();
+            return (Player) query.uniqueResult();
         }
     }
 
-    public List<Player> findAll(){
+    public List<Player> findAll() {
         String findAllHql = "FROM Player";
-        try(Session session = HibernateUtil.buildSession();
-          ) {
+        try (Session session = HibernateUtil.buildSession();
+        ) {
             session.beginTransaction();
 
             List<Player> list = session.createQuery(findAllHql).list();
@@ -47,4 +49,14 @@ public class PlayerDao {
             return list;
         }
     }
+
+    private static final PlayerDao INSTANCE = new PlayerDao();
+
+    private PlayerDao() {
+    }
+
+    public static PlayerDao getInstance() {
+        return INSTANCE;
+    }
+
 }

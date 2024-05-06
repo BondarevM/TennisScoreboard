@@ -20,6 +20,8 @@ public class NewMatchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // some logic
+        String name1 = req.getParameter("FirstPlayerName");
+        String name2 = req.getParameter("SecondPlayerName");
 
 
         req.getRequestDispatcher(JspUtil.getPath("matchScore")).forward(req, resp);

@@ -19,14 +19,17 @@
 
 <div class="container">
     <table class="score-table">
+        <thead>
         <tr>
             <th>Players</th>
             <th>Set</th>
             <th>Game</th>
             <th>Score</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
-            <td>Имя игрока 1</td>
+            <td>${param.get("FirstPlayerName")}</td>
             <td>Количество выигранных сетов 1</td>
             <td>Количество выигранных геймов 1</td>
             <td>Колличество очков</td>
@@ -37,7 +40,7 @@
             </td>
         </tr>
         <tr>
-            <td>Имя игрока 2</td>
+            <td>${param.get("SecondPlayerName")}</td>
             <td>Количество выигранных сетов 2</td>
             <td>Количество выигранных геймов 2</td>
             <td>Колличество очков</td>
@@ -47,6 +50,7 @@
                 </form>
             </td>
         </tr>
+        </tbody>
     </table>
 
 </div>

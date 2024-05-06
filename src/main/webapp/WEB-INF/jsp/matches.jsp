@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <style>
@@ -19,7 +20,7 @@
 <body>
 <%@include file="header.jsp" %>
 <div class="container">
-    <div class=" item title">Matches played</div>
+    <div class=" item title">Completed matches</div>
     <form action="/matches" method="get">
         <div class="item">
             <p>Name:</p>
@@ -31,7 +32,7 @@
             </label>
         </div>
         <div class="item">
-        <button>Search</button>
+            <button>Search</button>
         </div>
     </form>
 
@@ -41,50 +42,64 @@
             <th>ID</th>
             <th>Player 1</th>
             <th>Player 2</th>
-            <th>winner</th>
+            <th>Winner</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th>1</th>
-            <th>Mikhail</th>
-            <th>Petr</th>
-            <th>Mikhail</th>
-        </tr>
-        <tr>
-            <th>2</th>
-            <th>Mikhail</th>
-            <th>Petr</th>
-            <th>Mikhail</th>
-        </tr>
-        <tr>
-            <th>3</th>
-            <th>Mikhail</th>
-            <th>Petr</th>
-            <th>Mikhail</th>
-        </tr>
-        <tr>
-            <th>4</th>
-            <th>Mikhail</th>
-            <th>Petr</th>
-            <th>Mikhail</th>
-        </tr>
-        <tr>
-            <th>5</th>
-            <th>Mikhail</th>
-            <th>Petr</th>
-            <th>Mikhail</th>
-        </tr>
+        <c:forEach var="match" items="${requestScope.matches}">
+            <tr>
+                <th>${match.id}</th>
+                <th>${match.player1.name}</th>
+                <th>${match.player2.name}</th>
+                <th>${match.winner.name}</th>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
     <div class="pagination-controller">
-    <form class="item" action="" method="get">
-        <button class="button"> < </button>
-    </form>
-        <p class="item">  1  </p>
-    <form class="item" action="" method="get">
-        <button class="button"> > </button>
-    </form>
+
+        <c:choose>
+<%--            Prev link is disabled--%>
+            <c:when test="${requestScope.pageNumber eq '1'}">
+                <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber - 1}">
+                    <p class="page-link"> < </p>
+                </a>
+                <p class="item pages-counter"> ${requestScope.pageNumber} </p>
+                <a c href="matches?pageNumber=${requestScope.pageNumber + 1}">
+                    <p class="page-link"> > </p>
+                </a>
+            </c:when>
+<%--            Data Ran Out--%>
+            <c:when test="${requestScope.DataRanOut}">
+                <a href="matches?pageNumber=${requestScope.pageNumber - 1}">
+                    <p class="page-link"> < </p>
+                </a>
+                <p class="item pages-counter"> ${requestScope.pageNumber} </p>
+                <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber + 1}">
+                    <p class="page-link"> > </p>
+                </a>
+            </c:when>
+
+            <c:otherwise>
+                <a href="matches?pageNumber=${requestScope.pageNumber - 1}">
+                    <p class="page-link"> < </p>
+                </a>
+                <p class="item pages-counter"> ${requestScope.pageNumber} </p>
+                <a href="matches?pageNumber=${requestScope.pageNumber + 1}">
+                    <p class="page-link"> > </p>
+                </a>
+            </c:otherwise>
+        </c:choose>
+
+
+        <%--        <a href="matches?pageNumber=${requestScope.pageNumber - 1}">--%>
+        <%--            <p class="page-link"> < </p>--%>
+        <%--        </a>--%>
+        <%--        <p class="item pages-counter">  1  </p>--%>
+        <%--        <a href="matches?pageNumber=${requestScope.pageNumber + 1}">--%>
+        <%--            <p class="page-link"> > </p>--%>
+        <%--        </a>--%>
+
     </div>
 
 </div>

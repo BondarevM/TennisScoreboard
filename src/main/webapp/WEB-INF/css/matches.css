@@ -10,3 +10,10 @@ th{
 .pagination-controller{
     display: flex;
 }
+/*.page-link{*/
+/*    background-color: white;*/
+/*}*/
+.pages-counter{
+    margin: auto;
+    text-align: center;
+}

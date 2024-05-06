@@ -23,10 +23,9 @@ public class TestServlet extends HttpServlet {
 //        } catch (URISyntaxException e) {
 //            throw new RuntimeException(e);
 //        }
-        String name = req.getParameter("name");
-
-        PlayerDao playerDao = new PlayerDao();
-        playerDao.save(name);
+//        String name = req.getParameter("name");
+//
+        PlayerDao playerDao = PlayerDao.getInstance();
 
         List<Player> all = playerDao.findAll();
 
@@ -45,9 +44,6 @@ public class TestServlet extends HttpServlet {
             writer.write("GET");
             writer.write("</h1>");
 
-            writer.write("<h1>");
-            writer.write(playerDao.get(name).getName());
-            writer.write("</h1>");
         }
 
 

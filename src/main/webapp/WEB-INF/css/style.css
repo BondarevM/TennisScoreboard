@@ -73,5 +73,10 @@ button:hover {
 }
 .page-link:hover{
     color: #38c9c9;
-
+}
+thead{
+    color: #269df6;
+}
+.ui-state-disabled{
+    pointer-events: none;
 }
