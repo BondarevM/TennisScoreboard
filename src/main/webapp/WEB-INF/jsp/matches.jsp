@@ -21,18 +21,19 @@
 <%@include file="header.jsp" %>
 <div class="container">
     <div class=" item title">Completed matches</div>
-    <form action="/matches" method="get">
+    <form action="/matches?pageNumber=1" method="get">
         <div class="item">
             <p>Name:</p>
         </div>
 
         <div class="item">
             <label for="search">
-                <input type="text" name="PlayerName" id="search">
+                <input type="text" name="playerName" id="search" value="${playerName}">
             </label>
         </div>
+        <input type="hidden" name="pageNumber" value="1">
         <div class="item">
-            <button>Search</button>
+            <button type="submit">Search</button>
         </div>
     </form>
 
@@ -59,13 +60,23 @@
     <div class="pagination-controller">
 
         <c:choose>
+            <%--            Only 1 page of data--%>
+            <c:when test="${requestScope.pageNumber eq '1' && requestScope.DataRanOut}">
+                <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber - 1}">
+                    <p class="page-link"> < </p>
+                </a>
+                <p class="item pages-counter"> ${requestScope.pageNumber} </p>
+                <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber + 1}">
+                    <p class="page-link"> > </p>
+                </a>
+            </c:when>
 <%--            Prev link is disabled--%>
             <c:when test="${requestScope.pageNumber eq '1'}">
                 <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
                 </a>
                 <p class="item pages-counter"> ${requestScope.pageNumber} </p>
-                <a c href="matches?pageNumber=${requestScope.pageNumber + 1}">
+                <a href="matches?pageNumber=${requestScope.pageNumber + 1}">
                     <p class="page-link"> > </p>
                 </a>
             </c:when>
@@ -79,6 +90,7 @@
                     <p class="page-link"> > </p>
                 </a>
             </c:when>
+
 
             <c:otherwise>
                 <a href="matches?pageNumber=${requestScope.pageNumber - 1}">

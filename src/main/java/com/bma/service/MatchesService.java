@@ -10,10 +10,12 @@ import java.util.List;
 public class MatchesService {
     private static final MatchDao matchDao = MatchDao.getInstance();
 
-    public List<Match> findAll(int pageNumber) throws CustomException {
+    public List<Match> findAll(int pageNumber, String playerName) throws CustomException {
         pageNumber -= 1;
         List<Match> allMatches = matchDao.findAll();
         List<Match> fiveMatches = new ArrayList<>();
+
+        allMatches = SelectMatchesWithPlayerName(playerName, allMatches);
 
         try {
             if (allMatches.size() < pageNumber * 5 + 5) {
@@ -24,20 +26,37 @@ public class MatchesService {
                 fiveMatches.add(allMatches.get((Integer) (pageNumber * 5 + i)));
             }
             return fiveMatches;
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
             throw new CustomException("Incorrect page number");
         }
     }
 
-    public boolean CheckEndOfData(int pageNumber) {
+
+
+    public boolean CheckEndOfData(int pageNumber, String playerName) {
         List<Match> allMatches = matchDao.findAll();
+        allMatches = SelectMatchesWithPlayerName(playerName, allMatches);
 
         if (allMatches.size() >= (pageNumber - 1) * 5 && allMatches.size() <= pageNumber  * 5) {
             return true;
         } else {
             return false;
         }
+    }
 
+    private List<Match> SelectMatchesWithPlayerName(String playerName, List<Match> allMatches) {
+        if (playerName != null){
+            if (!playerName.isEmpty()){
+                List<Match> newAllMatches = new ArrayList<>();
+                for (Match match : allMatches){
+                    if (match.getPlayer1().getName().equals(playerName) || match.getPlayer2().getName().equals(playerName)){
+                        newAllMatches.add(match);
+                    }
+                }
+                allMatches = newAllMatches;
+            }
+        }
+        return allMatches;
     }
 
 
