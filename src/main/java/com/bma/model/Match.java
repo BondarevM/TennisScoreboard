@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 @Setter
 @Entity
 @Table(name = "Matches")
@@ -26,4 +27,10 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "Winner")
     private Player winner;
+
+    @Transient
+    MatchScore matchScore;
+
+    @Transient
+    Boolean isSaved;
 }

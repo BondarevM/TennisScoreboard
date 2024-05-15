@@ -17,20 +17,20 @@
 <%@include file="header.jsp"%>
 
 <div class="container">
-    <div class="item title">New match page</div>
+    <div class="item title">New match</div>
     <form  action="/new-match" method="post">
         <div class="item">
-            <label for="player1">Имя игрока 1:
-                <input type="text" name="FirstPlayerName" id="player1">
+            <label for="player1">Player 1:
+                <input type="text" name="firstPlayerName" id="player1">
             </label>
         </div>
         <div class="item">
-            <label for="player2">Имя игрока 2:
-                <input type="text" name="SecondPlayerName" id="player2">
+            <label for="player2">Player 2:
+                <input type="text" name="secondPlayerName" id="player2">
             </label>
         </div>
         <div class=" start-button">
-            <button type="submit">начать</button>
+            <button type="submit">Start</button>
         </div>
     </form>
 </div>

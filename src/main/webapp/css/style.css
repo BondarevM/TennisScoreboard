@@ -7,7 +7,7 @@ a {
 }
 body {
     background-color: #061823;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin: 0;
 }
 p {
@@ -80,3 +80,10 @@ thead{
 .ui-state-disabled{
     pointer-events: none;
 }
+.goal-image{
+    height: 50px;
+    width: 89px;
+}
+/*.goal-image:hover{*/
+/*    background-image: url("../images/goalTest.jpg");*/
+/*}*/

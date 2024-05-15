@@ -24,7 +24,7 @@ public class PlayerDao {
         }
     }
 
-    public Player get(String name) {
+    public Player findByName(String name) {
         String hql = "FROM Player WHERE name = :name";
         try (Session session = HibernateUtil.buildSession()) {
             session.beginTransaction();

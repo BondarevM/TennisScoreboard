@@ -21,6 +21,17 @@ public class MatchDao {
         }
     }
 
+    public void save(Match match){
+
+        try(Session session = HibernateUtil.buildSession()){
+            session.beginTransaction();
+            session.save(match);
+            session.getTransaction().commit();
+        }
+
+
+    }
+
     private static final MatchDao INSTANCE = new MatchDao();
     private MatchDao(){}
 

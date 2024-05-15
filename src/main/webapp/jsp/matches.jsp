@@ -18,6 +18,7 @@
     <title>Matches</title>
 </head>
 <body>
+
 <%@include file="header.jsp" %>
 <div class="container">
     <div class=" item title">Completed matches</div>
@@ -91,7 +92,6 @@
                 </a>
             </c:when>
 
-
             <c:otherwise>
                 <a href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
@@ -102,18 +102,7 @@
                 </a>
             </c:otherwise>
         </c:choose>
-
-
-        <%--        <a href="matches?pageNumber=${requestScope.pageNumber - 1}">--%>
-        <%--            <p class="page-link"> < </p>--%>
-        <%--        </a>--%>
-        <%--        <p class="item pages-counter">  1  </p>--%>
-        <%--        <a href="matches?pageNumber=${requestScope.pageNumber + 1}">--%>
-        <%--            <p class="page-link"> > </p>--%>
-        <%--        </a>--%>
-
     </div>
-
 </div>
 
 </body>
