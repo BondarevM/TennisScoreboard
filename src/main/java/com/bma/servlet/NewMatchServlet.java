@@ -1,5 +1,6 @@
 package com.bma.servlet;
 
+import com.bma.exception.PlayerNameException;
 import com.bma.service.CreateNewMatchService;
 import com.bma.service.MatchScoreCalculationService;
 import com.bma.util.JspUtil;
@@ -24,12 +25,19 @@ public class NewMatchServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // some logic
         String firstPlayerName = req.getParameter("firstPlayerName");
         String secondPlayerName = req.getParameter("secondPlayerName");
 
-        String uuid = createNewMatchService.createNewMatch(firstPlayerName, secondPlayerName);
 
+        String uuid = null;
+        try {
+            uuid = createNewMatchService.createNewMatch(firstPlayerName, secondPlayerName);
+        } catch (PlayerNameException e) {
+            req.setAttribute("playerNameException", e.getMessage());
+            doGet(req,resp);
+            req.getRequestDispatcher(JspUtil.getPath("newMatch")).forward(req,resp);
+            return;
+        }
 
 
         req.getRequestDispatcher("/match-score?uuid=" + uuid).forward(req,resp);

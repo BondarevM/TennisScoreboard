@@ -37,27 +37,33 @@
             <button type="submit">Search</button>
         </div>
     </form>
-
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
-            <th>Winner</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="match" items="${requestScope.matches}">
-            <tr>
-                <th>${match.id}</th>
-                <th>${match.player1.name}</th>
-                <th>${match.player2.name}</th>
-                <th>${match.winner.name}</th>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    <c:choose>
+        <c:when test="${requestScope.paginationException}">
+            <p class="error-message">Incorrect page number</p>
+        </c:when>
+        <c:otherwise>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Player 1</th>
+                    <th>Player 2</th>
+                    <th>Winner</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="match" items="${requestScope.matches}">
+                    <tr>
+                        <th>${match.id}</th>
+                        <th>${match.player1.name}</th>
+                        <th>${match.player2.name}</th>
+                        <th>${match.winner.name}</th>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:otherwise>
+    </c:choose>
     <div class="pagination-controller">
 
         <c:choose>

@@ -18,6 +18,10 @@
 
 <div class="container">
     <div class="item title">New match</div>
+
+    <c:if test="${not empty requestScope.playerNameException}">
+        <p class="error-message">${requestScope.playerNameException}</p>
+    </c:if>
     <form  action="/new-match" method="post">
         <div class="item">
             <label for="player1">Player 1:

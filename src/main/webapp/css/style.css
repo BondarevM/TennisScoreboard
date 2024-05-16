@@ -84,6 +84,6 @@ thead{
     height: 50px;
     width: 89px;
 }
-/*.goal-image:hover{*/
-/*    background-image: url("../images/goalTest.jpg");*/
-/*}*/
+.error-message{
+    color: red;
+}

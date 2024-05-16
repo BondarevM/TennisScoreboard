@@ -1,7 +1,7 @@
 package com.bma.service;
 
 import com.bma.dao.MatchDao;
-import com.bma.exception.CustomException;
+import com.bma.exception.PaginationException;
 import com.bma.model.Match;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class MatchesService {
     private static final MatchDao matchDao = MatchDao.getInstance();
 
-    public List<Match> findAll(int pageNumber, String playerName) throws CustomException {
+    public List<Match> getFiveMatches(int pageNumber, String playerName) throws PaginationException {
         pageNumber -= 1;
         List<Match> allMatches = matchDao.findAll();
         List<Match> fiveMatches = new ArrayList<>();
@@ -27,7 +27,7 @@ public class MatchesService {
             }
             return fiveMatches;
         } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
-            throw new CustomException("Incorrect page number");
+            throw new PaginationException("Incorrect page number");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.bma.servlet;
 
-import com.bma.exception.CustomException;
+import com.bma.exception.PaginationException;
 import com.bma.model.Match;
 import com.bma.service.MatchesService;
 import com.bma.util.JspUtil;
@@ -36,14 +36,18 @@ public class MatchesServlet extends HttpServlet {
         }
 
         try {
-            matches = matchService.findAll(Integer.parseInt(pageNumber), playerName);
+            matches = matchService.getFiveMatches(Integer.parseInt(pageNumber), playerName);
 
             if (matchService.CheckEndOfData(Integer.parseInt(pageNumber), playerName)) {
                 req.setAttribute("DataRanOut", true);
             }
 
-        } catch (CustomException e) {
-            resp.sendError(415, e.getMessage());
+        } catch (PaginationException  | NumberFormatException e ) {
+            req.setAttribute("paginationException", true);
+            req.setAttribute("pageNumber", "1");
+            req.setAttribute("matches", matches);
+            req.setAttribute("playerName", playerName);
+            req.getRequestDispatcher(JspUtil.getPath("matches")).forward(req,resp);
             return;
         }
 
