@@ -10,19 +10,22 @@
 <html>
 <head>
     <title>New Match</title>
-    <style><%@ include file="../css/style.css" %></style>
-    <style><%@ include file="../css/newMatch.css" %></style>
+    <style>
+        <%@ include file="../css/style.css" %>
+    </style>
+    <style>
+        <%@ include file="../css/newMatch.css" %>
+    </style>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 <div class="container">
     <div class="item title">New match</div>
-
     <c:if test="${not empty requestScope.playerNameException}">
         <p class="error-message">${requestScope.playerNameException}</p>
     </c:if>
-    <form  action="/new-match" method="post">
+    <form action="/new-match" method="post">
         <div class="item">
             <label for="player1">Player 1:
                 <input type="text" name="firstPlayerName" id="player1">

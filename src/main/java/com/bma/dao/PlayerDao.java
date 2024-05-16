@@ -13,7 +13,7 @@ public class PlayerDao {
 
 
     public void save(String name) throws DatabaseException {
-        try (Session session = HibernateUtil.buildSession()) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
             Player player = Player.builder()
                     .name(name)
@@ -21,15 +21,16 @@ public class PlayerDao {
             session.save(player);
 
             session.getTransaction().commit();
-        } catch (HibernateException e){
-            throw new DatabaseException("Player already exist");
+        } catch (HibernateException e) {
+            throw new DatabaseException("Something wrong with database");
         }
     }
 
-    public Player findByName(String name)   {
+    public Player findByName(String name) {
         String hql = "FROM Player WHERE name = :name";
-        try (Session session = HibernateUtil.buildSession()) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             session.beginTransaction();
+
             Query query = session.createQuery(hql).setParameter("name", name);
             session.getTransaction().commit();
             return (Player) query.uniqueResult();
@@ -38,14 +39,12 @@ public class PlayerDao {
 
     public List<Player> findAll() {
         String findAllHql = "FROM Player";
-        try (Session session = HibernateUtil.buildSession();
+        try (Session session = HibernateUtil.getSessionFactory().openSession();
         ) {
             session.beginTransaction();
 
             List<Player> list = session.createQuery(findAllHql).list();
-
             session.getTransaction().commit();
-
             return list;
         }
     }

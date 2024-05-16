@@ -9,13 +9,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <style><%@ include file="../css/style.css" %></style>
-    <style><%@ include file="../css/matchScore.css" %></style>
+    <style>
+        <%@ include file="../css/style.css" %>
+    </style>
+    <style>
+        <%@ include file="../css/matchScore.css" %>
+    </style>
     <title>Match score</title>
 
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 
 <div class="container">
@@ -44,7 +48,6 @@
                     <td>${requestScope.firstPlayerName}</td>
                     <td>${requestScope.firstPlayerSet}</td>
                     <td>${requestScope.firstPlayerGame}</td>
-                        <%--            <td>${requestScope.firstPlayerScore}</td>--%>
                     <td>
                         <c:choose>
                             <c:when test="${requestScope.winByTwo}">
@@ -67,7 +70,6 @@
                     <td>${requestScope.secondPlayerName}</td>
                     <td>${requestScope.secondPlayerSet}</td>
                     <td>${requestScope.secondPlayerGame}</td>
-                        <%--            <td>${requestScope.secondPlayerScore}</td>--%>
                     <td>
                         <c:choose>
                             <c:when test="${requestScope.winByTwo}">
@@ -90,7 +92,6 @@
             </table>
         </c:otherwise>
     </c:choose>
-
 </div>
 </body>
 </html>

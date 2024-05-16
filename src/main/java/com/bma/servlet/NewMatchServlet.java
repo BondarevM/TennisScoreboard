@@ -17,7 +17,6 @@ public class NewMatchServlet extends HttpServlet {
     private static final CreateNewMatchService createNewMatchService = CreateNewMatchService.getInstance();
     private static final MatchScoreCalculationService matchScoreCalculationService = MatchScoreCalculationService.getInstance();
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher(JspUtil.getPath("newMatch")).forward(req, resp);
@@ -28,20 +27,15 @@ public class NewMatchServlet extends HttpServlet {
         String firstPlayerName = req.getParameter("firstPlayerName");
         String secondPlayerName = req.getParameter("secondPlayerName");
 
-
         String uuid = null;
         try {
             uuid = createNewMatchService.createNewMatch(firstPlayerName, secondPlayerName);
         } catch (PlayerNameException e) {
             req.setAttribute("playerNameException", e.getMessage());
-            doGet(req,resp);
-            req.getRequestDispatcher(JspUtil.getPath("newMatch")).forward(req,resp);
+            doGet(req, resp);
+            req.getRequestDispatcher(JspUtil.getPath("newMatch")).forward(req, resp);
             return;
         }
-
-
-        req.getRequestDispatcher("/match-score?uuid=" + uuid).forward(req,resp);
-
-
+        req.getRequestDispatcher("/match-score?uuid=" + uuid).forward(req, resp);
     }
 }

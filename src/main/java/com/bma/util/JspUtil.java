@@ -6,7 +6,7 @@ import lombok.experimental.UtilityClass;
 public class JspUtil {
     private static final String JSP_PATH = "jsp/%s.jsp";
 
-    public String getPath(String jspName){
-        return new String(JSP_PATH.formatted(jspName));
+    public String getPath(String jspName) {
+        return JSP_PATH.formatted(jspName);
     }
 }

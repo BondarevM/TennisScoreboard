@@ -24,7 +24,6 @@ public class MatchesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         if (req.getParameter("pageNumber") != null) {
             pageNumber = req.getParameter("pageNumber");
         }
@@ -38,27 +37,23 @@ public class MatchesServlet extends HttpServlet {
         try {
             matches = matchService.getFiveMatches(Integer.parseInt(pageNumber), playerName);
 
-            if (matchService.CheckEndOfData(Integer.parseInt(pageNumber), playerName)) {
+            if (matchService.checkEndOfData(Integer.parseInt(pageNumber), playerName)) {
                 req.setAttribute("DataRanOut", true);
             }
 
-        } catch (PaginationException  | NumberFormatException e ) {
-            req.setAttribute("paginationException", true);
+        } catch (PaginationException | NumberFormatException e) {
+            req.setAttribute("paginationException", e.getMessage());
             req.setAttribute("pageNumber", "1");
             req.setAttribute("matches", matches);
             req.setAttribute("playerName", playerName);
-            req.getRequestDispatcher(JspUtil.getPath("matches")).forward(req,resp);
+            req.getRequestDispatcher(JspUtil.getPath("matches")).forward(req, resp);
             return;
         }
-
 
         req.setAttribute("pageNumber", pageNumber);
         req.setAttribute("matches", matches);
         req.setAttribute("playerName", playerName);
 
-
         req.getRequestDispatcher(JspUtil.getPath("matches")).forward(req, resp);
     }
-
-
 }

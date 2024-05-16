@@ -33,7 +33,6 @@ public class MatchScoreCalculationServiceTest {
 
         assertEquals(0, match.getMatchScore().getFirstPlayerGame());
         assertEquals(0, match.getMatchScore().getSecondPlayerGame());
-
     }
 
     @Test
@@ -47,7 +46,6 @@ public class MatchScoreCalculationServiceTest {
 
         assertEquals(match.getMatchScore().getFirstPlayerGame(), 1);
         assertEquals(match.getMatchScore().getSecondPlayerGame(), 0);
-
     }
 
     @Test
@@ -60,7 +58,5 @@ public class MatchScoreCalculationServiceTest {
         matchScoreCalculationService.winsGoal("first", null, match);
 
         assertTrue(match.getMatchScore().isTieBreak());
-
     }
-
 }

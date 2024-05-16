@@ -1,18 +1,19 @@
-
-
 a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
 }
+
 body {
     background-color: #061823;
     font-family: Arial, sans-serif;
     margin: 0;
 }
+
 p {
     color: #FAF0E6;
 }
+
 label{
     color: #FAF0E6;
 }
@@ -36,12 +37,14 @@ label{
     right: 0;
     margin: 0 auto;
 }
+
 .item{
     padding: 2px;
     width: fit-content;
     height: fit-content;
     align-self: baseline;
 }
+
 .title{
     align-self: center;
     color: #269df6;
@@ -59,10 +62,10 @@ button {
     font-size: 12px;
     cursor: pointer;
 }
+
 table{
     color: #FAF0E6;
 }
-
 
 button:hover {
     background-color: #00FFFFFF;
@@ -71,19 +74,24 @@ button:hover {
 .page-link{
     color: #00FFFFFF;
 }
+
 .page-link:hover{
     color: #38c9c9;
 }
+
 thead{
     color: #269df6;
 }
+
 .ui-state-disabled{
     pointer-events: none;
 }
+
 .goal-image{
     height: 50px;
     width: 89px;
 }
+
 .error-message{
     color: red;
 }

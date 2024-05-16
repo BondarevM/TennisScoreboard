@@ -37,37 +37,32 @@
             <button type="submit">Search</button>
         </div>
     </form>
-    <c:choose>
-        <c:when test="${requestScope.paginationException}">
-            <p class="error-message">Incorrect page number</p>
-        </c:when>
-        <c:otherwise>
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Player 1</th>
-                    <th>Player 2</th>
-                    <th>Winner</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="match" items="${requestScope.matches}">
-                    <tr>
-                        <th>${match.id}</th>
-                        <th>${match.player1.name}</th>
-                        <th>${match.player2.name}</th>
-                        <th>${match.winner.name}</th>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${not empty requestScope.paginationException}">
+        <p class="error-message">Incorrect page number</p>
+    </c:if>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th>Winner</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="match" items="${requestScope.matches}">
+            <tr>
+                <th>${match.id}</th>
+                <th>${match.player1.name}</th>
+                <th>${match.player2.name}</th>
+                <th>${match.winner.name}</th>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
     <div class="pagination-controller">
 
         <c:choose>
-            <%--            Only 1 page of data--%>
             <c:when test="${requestScope.pageNumber eq '1' && requestScope.DataRanOut}">
                 <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
@@ -77,7 +72,6 @@
                     <p class="page-link"> > </p>
                 </a>
             </c:when>
-<%--            Prev link is disabled--%>
             <c:when test="${requestScope.pageNumber eq '1'}">
                 <a class="ui-state-disabled" href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
@@ -87,7 +81,6 @@
                     <p class="page-link"> > </p>
                 </a>
             </c:when>
-<%--            Data Ran Out--%>
             <c:when test="${requestScope.DataRanOut}">
                 <a href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
@@ -97,7 +90,6 @@
                     <p class="page-link"> > </p>
                 </a>
             </c:when>
-
             <c:otherwise>
                 <a href="matches?pageNumber=${requestScope.pageNumber - 1}">
                     <p class="page-link"> < </p>
@@ -110,6 +102,5 @@
         </c:choose>
     </div>
 </div>
-
 </body>
 </html>

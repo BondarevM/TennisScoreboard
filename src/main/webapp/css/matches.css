@@ -1,18 +1,19 @@
 form{
     display: flex;
 }
+
 table{
     width: 100%;
 }
+
 th{
     padding: 5px;
 }
+
 .pagination-controller{
     display: flex;
 }
-/*.page-link{*/
-/*    background-color: white;*/
-/*}*/
+
 .pages-counter{
     margin: auto;
     text-align: center;

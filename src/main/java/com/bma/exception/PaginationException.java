@@ -1,6 +1,6 @@
 package com.bma.exception;
 
-public class PaginationException extends Exception{
+public class PaginationException extends Exception {
     public PaginationException() {
     }
 

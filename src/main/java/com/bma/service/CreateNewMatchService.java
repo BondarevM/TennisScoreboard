@@ -17,12 +17,11 @@ public class CreateNewMatchService {
         Player player = null;
 
         try {
-           playerDao.save(playerName);
-           player = playerDao.findByName(playerName);
+            playerDao.save(playerName);
+            player = playerDao.findByName(playerName);
         } catch (DatabaseException e) {
             player = playerDao.findByName(playerName);
         }
-
         return player;
     }
 
@@ -48,18 +47,19 @@ public class CreateNewMatchService {
     }
 
     private String[] validatePlayerNames(String firstPlayerName, String secondPlayerName) throws PlayerNameException {
-        if (firstPlayerName.isEmpty() || secondPlayerName.isEmpty()){
-            throw new PlayerNameException("Write the names of the players");        }
+        if (firstPlayerName.isEmpty() || secondPlayerName.isEmpty()) {
+            throw new PlayerNameException("Write the names of the players");
+        }
 
+        String validatedFirstPlayerName = firstPlayerName.substring(0, 1).toUpperCase() + firstPlayerName.substring(1).toLowerCase();
+        String validatedSecondPlayerName = secondPlayerName.substring(0, 1).toUpperCase() + secondPlayerName.substring(1).toLowerCase();
 
-        if (firstPlayerName.equals(secondPlayerName)){
+        if (validatedFirstPlayerName.equals(validatedSecondPlayerName)) {
             throw new PlayerNameException("Write the names of two different players");
         }
-        String f1 = firstPlayerName.substring(0,1).toUpperCase() + firstPlayerName.substring(1).toLowerCase();
-        String f2 = secondPlayerName.substring(0,1).toUpperCase() + secondPlayerName.substring(1).toLowerCase();
-        return new String[]{f1,f2};
-    }
 
+        return new String[]{validatedFirstPlayerName, validatedSecondPlayerName};
+    }
 
     public static CreateNewMatchService getInstance() {
         return INSTANCE;

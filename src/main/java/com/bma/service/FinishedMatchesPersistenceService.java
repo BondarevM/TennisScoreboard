@@ -6,14 +6,9 @@ import com.bma.model.Player;
 
 public class FinishedMatchesPersistenceService {
 
-    private static final CreateNewMatchService createNewMatchService = CreateNewMatchService.getInstance();
     private static final MatchDao matchDao = MatchDao.getInstance();
 
-    public void saveMatch(Match currentMatch){
-//
-//        Player firstPlayer = createNewMatchService.validatePlayer(firstPlayerName);
-//        Player secondPlayer = createNewMatchService.validatePlayer(secondPlayerName);
-//        Player winner = createNewMatchService.validatePlayer(winnerName);
+    public void saveMatch(Match currentMatch) {
 
         Match match = Match.builder()
                 .player1(currentMatch.getPlayer1())
@@ -24,10 +19,13 @@ public class FinishedMatchesPersistenceService {
         matchDao.save(match);
     }
 
+    private FinishedMatchesPersistenceService() {
+    }
 
-
-    private FinishedMatchesPersistenceService(){}
     private static final FinishedMatchesPersistenceService INSTANCE = new FinishedMatchesPersistenceService();
-    public static FinishedMatchesPersistenceService getInstance(){return INSTANCE;}
+
+    public static FinishedMatchesPersistenceService getInstance() {
+        return INSTANCE;
+    }
 
 }

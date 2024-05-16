@@ -26,8 +26,6 @@ public class MatchScoreServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name1 = req.getParameter("firstPlayerName");
-        String name2 = req.getParameter("secondPlayerName");
 
         String firstPlayerButton = req.getParameter("player1");
         String secondPlayerButton = req.getParameter("player2");
@@ -36,23 +34,20 @@ public class MatchScoreServlet extends HttpServlet {
 
         Match currentMatch = ongoingMatchesService.getCurrentMatch(uuid);
 
-
         String firstPlayerName = currentMatch.getPlayer1().getName();
         String secondPlayerName = currentMatch.getPlayer2().getName();
 
-
         matchScoreCalculationService.winsGoal(firstPlayerButton, secondPlayerButton, currentMatch);
-
 
         req.setAttribute("firstPlayerName", firstPlayerName);
         req.setAttribute("secondPlayerName", secondPlayerName);
-
 
         if (currentMatch.getMatchScore().isMatchFinished()) {
             if (!currentMatch.getIsSaved()) {
                 req.setAttribute("matchFinished", true);
                 req.setAttribute("winner", currentMatch.getWinner().getName());
                 finishedMatchesPersistenceService.saveMatch(currentMatch);
+                ongoingMatchesService.deleteMatch(uuid);
                 currentMatch.setIsSaved(true);
             }
         }
@@ -65,12 +60,10 @@ public class MatchScoreServlet extends HttpServlet {
             if (currentMatch.getMatchScore().isSecondPlayerAdIn()) {
                 req.setAttribute("secondPlayerAdIn", "Ad");
             }
-
         }
 
         req.setAttribute("winByTwo", currentMatch.getMatchScore().isWinByTwo());
 
-        req.setAttribute("firstPlayerScore", Integer.toString(currentMatch.getMatchScore().getFirstPlayerScore()));
         req.setAttribute("firstPlayerScore", Integer.toString(currentMatch.getMatchScore().getFirstPlayerScore()));
         req.setAttribute("secondPlayerScore", Integer.toString(currentMatch.getMatchScore().getSecondPlayerScore()));
 
@@ -79,7 +72,6 @@ public class MatchScoreServlet extends HttpServlet {
 
         req.setAttribute("firstPlayerSet", Integer.toString(currentMatch.getMatchScore().getFirstPlayerSet()));
         req.setAttribute("secondPlayerSet", Integer.toString(currentMatch.getMatchScore().getSecondPlayerSet()));
-
 
         req.getRequestDispatcher(JspUtil.getPath("matchScore") + "?uuid=" + uuid).forward(req, resp);
     }

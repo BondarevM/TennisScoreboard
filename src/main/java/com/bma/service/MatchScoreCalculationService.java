@@ -148,7 +148,6 @@ public class MatchScoreCalculationService {
                 case 6:
                     winsSet(firstPlayerButton, secondPlayerButton);
                     break;
-
             }
         }
     }
@@ -178,7 +177,6 @@ public class MatchScoreCalculationService {
                     currentMatch.setWinner(currentMatch.getPlayer2());
                     matchScore.setSecondPlayerSet(2);
                     matchScore.setMatchFinished(true);
-
                     break;
             }
         }
@@ -198,7 +196,6 @@ public class MatchScoreCalculationService {
         matchScore.setFirstPlayerAdIn(false);
         matchScore.setSecondPlayerAdIn(false);
     }
-
 
 
     private MatchScoreCalculationService() {

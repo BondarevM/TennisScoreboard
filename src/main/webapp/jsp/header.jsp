@@ -16,13 +16,11 @@
     <style>
         <%@ include file="../css/header.css" %>
     </style>
-
 </head>
 <body>
-
 <div class="navigation">
     <a class="page-link" href="index">
-        <div >HOME</div>
+        <div>HOME</div>
     </a>
     <a class="page-link" href="new-match">
         <div>NEW</div>
@@ -30,9 +28,6 @@
     <a class="page-link" href="matches?pageNumber=1&playerName=">
         <div>MATCHES</div>
     </a>
-
 </div>
-
-
 </body>
 </html>

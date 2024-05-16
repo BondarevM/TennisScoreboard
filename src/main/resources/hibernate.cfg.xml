@@ -12,12 +12,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
-
-<!--        <property name="javax.persistence.sql-load-script-source">data.sql</property>-->
-<!--        <property name="hibernate.hbm2ddl.import_files">data.sql</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
-
-
 
         <mapping class="com.bma.model.Player"/>
         <mapping class="com.bma.model.Match"/>
