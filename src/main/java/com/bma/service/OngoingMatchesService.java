@@ -1,6 +1,5 @@
 package com.bma.service;
 
-import com.bma.dto.MatchDto;
 import com.bma.model.Match;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,10 +12,8 @@ public class OngoingMatchesService {
         return uuid;
     }
 
-    public MatchDto getCurrentMatch(String uuid){
-
-
-        Match match = currentMatches.get(uuid);
+    public Match getCurrentMatch(String uuid){
+        return currentMatches.get(uuid);
     }
 
 

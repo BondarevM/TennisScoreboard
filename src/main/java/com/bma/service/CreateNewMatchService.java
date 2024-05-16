@@ -1,13 +1,12 @@
 package com.bma.service;
 
 import com.bma.dao.PlayerDao;
+import com.bma.exception.DatabaseException;
 import com.bma.model.Match;
 import com.bma.model.MatchScore;
 import com.bma.model.Player;
 
-import java.util.HashMap;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class CreateNewMatchService {
     private static final OngoingMatchesService ongoingMatchesService = OngoingMatchesService.getInstance();
@@ -18,13 +17,22 @@ public class CreateNewMatchService {
     }
 
     public Player validatePlayer(String playerName) {
-        Player player = playerDao.findByName(playerName);
+        Player player = null;
 
-        if (player == null) {
-            playerDao.save(playerName);
+        try {
+           playerDao.save(playerName);
+           player = playerDao.findByName(playerName);
+        } catch (DatabaseException e) {
             player = playerDao.findByName(playerName);
         }
 
+//        Player player = playerDao.findByName(playerName);
+//
+//        if (player == null) {
+//            playerDao.save(playerName);
+//            player = playerDao.findByName(playerName);
+//        }
+//
         return player;
     }
 

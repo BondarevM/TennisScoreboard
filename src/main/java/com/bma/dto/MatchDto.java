@@ -1,5 +1,6 @@
 package com.bma.dto;
 
+import com.bma.model.Player;
 import lombok.*;
 
 @Getter
@@ -8,8 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class MatchDto {
-    private String firstPlayerName;
-    private String secondPlayerName;
+    private Player player1;
+    private Player player2;
     int firstPlayerScore;
     int secondPlayerScore;
     int firstPlayerGame;
