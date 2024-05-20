@@ -21,7 +21,8 @@ http://176.109.106.154:8080/index
 ___
 ### Application functionality
 Home page
-![image](https://github.com/BondarevM/TennisScoreboard/assets/99888305/dc8b443b-93d5-49e4-8215-703f87a42d50)
+![image](https://github.com/BondarevM/TennisScoreboard/assets/99888305/4264852e-d9a5-4739-9612-e7f1cb91d0b0)
+
 
 ---
 Creating a new match
