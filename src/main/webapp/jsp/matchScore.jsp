@@ -50,7 +50,7 @@
                     <td>${requestScope.firstPlayerGame}</td>
                     <td>
                         <c:choose>
-                            <c:when test="${requestScope.winByTwo}">
+                            <c:when test="${not empty requestScope.firstPlayerAdIn}">
                                 ${requestScope.firstPlayerAdIn}
                             </c:when>
                             <c:otherwise>
@@ -72,7 +72,7 @@
                     <td>${requestScope.secondPlayerGame}</td>
                     <td>
                         <c:choose>
-                            <c:when test="${requestScope.winByTwo}">
+                            <c:when test="${not empty requestScope.secondPlayerAdIn}">
                                 ${requestScope.secondPlayerAdIn}
                             </c:when>
                             <c:otherwise>
